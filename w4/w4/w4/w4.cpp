@@ -3,6 +3,10 @@
 #include <fstream>
 #include <string>
 #include <utility>
+#include "Restaurant.h"
+#include "Restaurant.h"
+//#include "ConfirmationSender.h"
+//#include "ConfirmationSender.h"
 #include "Reservation.h"
 #include "Reservation.h"
 
@@ -76,6 +80,66 @@ int main(int argc, char** argv)
 	}
 	std::cout << "--------------------------\n\n";
 
+	{
+		std::cout << "R: Testing Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::Restaurant res1(ppReservations, cnt);
+		std::cout << res1;
+		std::cout << "==========================\n\n";
+
+		std::cout << "R: Testing Copy Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::Restaurant res2(res1);
+		std::cout << res1;
+		std::cout << res2;
+		std::cout << "==========================\n\n";
+
+		std::cout << "R: Testing Move Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::Restaurant res3(std::move(res1));
+		std::cout << res1;
+		std::cout << res3;
+		std::cout << "==========================\n\n";
+	}
+
+	/*
+	// Confirmation Sender
+	{
+		std::cout << "CS: Testing Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::ConfirmationSender sender1;
+		std::cout << sender1;
+		std::cout << "==========================\n\n";
+
+		std::cout << "CS: Testing Operators\n";
+		std::cout << "==========================\n";
+		sender1 += *ppReservations[5];
+		sender1 += *ppReservations[16];
+		sender1 += *ppReservations[16];
+		sender1 += *ppReservations[8];
+		std::cout << sender1;
+		sender1 -= *ppReservations[8];
+		sender1 -= *ppReservations[7];
+		std::cout << sender1;
+		std::cout << "==========================\n\n";
+
+		std::cout << "CS: Testing Copy Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::ConfirmationSender sender2(sender1);
+		std::cout << sender1;
+		std::cout << sender2;
+		std::cout << "==========================\n\n";
+
+		std::cout << "CS: Testing Move Constuctor\n";
+		std::cout << "==========================\n";
+		sdds::ConfirmationSender sender3(std::move(sender1));
+		std::cout << sender1;
+		std::cout << sender3;
+		std::cout << "==========================\n\n";
+
+	}
+
+	*/
 	// cleanup
 	for (auto i = 0u; i < cnt; ++i)
 		delete ppReservations[i];
