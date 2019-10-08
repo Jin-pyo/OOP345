@@ -36,10 +36,7 @@ namespace sdds
 		{
 			delete[]m_reservation;
 			this->m_num = other.m_num;
-
 			this->m_reservation = other.m_reservation;
-
-
 		}
 		return *this;
 	}
@@ -61,8 +58,8 @@ namespace sdds
 	}
 	Restaurant::~Restaurant()
 	{
-		delete[] m_reservation;
-		m_reservation = nullptr;
+		//delete[] m_reservation;
+		//m_reservation = nullptr;
 	}
 
 	size_t Restaurant::size() const

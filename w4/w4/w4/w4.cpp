@@ -5,8 +5,8 @@
 #include <utility>
 #include "Restaurant.h"
 #include "Restaurant.h"
-//#include "ConfirmationSender.h"
-//#include "ConfirmationSender.h"
+#include "ConfirmationSender.h"
+#include "ConfirmationSender.h"
 #include "Reservation.h"
 #include "Reservation.h"
 
@@ -102,7 +102,7 @@ int main(int argc, char** argv)
 		std::cout << "==========================\n\n";
 	}
 
-	/*
+
 	// Confirmation Sender
 	{
 		std::cout << "CS: Testing Constuctor\n";
@@ -138,8 +138,6 @@ int main(int argc, char** argv)
 		std::cout << "==========================\n\n";
 
 	}
-
-	*/
 	// cleanup
 	for (auto i = 0u; i < cnt; ++i)
 		delete ppReservations[i];

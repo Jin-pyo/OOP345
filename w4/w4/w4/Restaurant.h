@@ -24,7 +24,7 @@ namespace sdds
 
 		size_t size() const;
 
-		friend std::ostream& operator<<(std::ostream&, const Restaurant& obj);
+		friend std::ostream& operator<<(std::ostream& os, const Restaurant& obj);
 	};
 }
 
