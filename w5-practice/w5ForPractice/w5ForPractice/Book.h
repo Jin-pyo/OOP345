@@ -10,18 +10,21 @@ namespace sdds
 		std::string m_author;
 		std::string m_title;
 		std::string m_country;
-		double m_price;
-		size_t m_year;
 		std::string m_description;
-		void check(const std::string& str);
+		double m_price=0;
+		size_t m_year=0;
+		
+		void check(std::string& str) const;
 
 	public:
 		Book() {};
-		const std::string& title() const { return this->title; };
-		const std::string& country() const { return this->country; };
+		Book(const std::string& strBook);
+		const std::string& title() const { return this->m_title; };
+		const std::string& country() const { return this->m_country; }
 		const size_t& year() const { return this->m_year; };
 		double& price() { return m_price; };
-		Book(const std::string& strBook);
+
+	
 
 		template<typename T>
 		void fixSpelling(T spellChecker)

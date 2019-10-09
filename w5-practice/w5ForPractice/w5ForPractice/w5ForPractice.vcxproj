@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{75B0E2A8-9DA4-471C-9D92-925DF89F99F5}</ProjectGuid>
-    <RootNamespace>w5</RootNamespace>
+    <ProjectGuid>{57FC1DBD-850C-4808-A7EB-1E4A90DBA07F}</ProjectGuid>
+    <RootNamespace>w5ForPractice</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -124,16 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Book.cpp" />
-    <ClCompile Include="Collection.cpp" />
-    <ClCompile Include="Movie.cpp" />
-    <ClCompile Include="SpellChecker.cpp" />
     <ClCompile Include="w5.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
-    <ClInclude Include="Collection.h" />
-    <ClInclude Include="Movie.h" />
-    <ClInclude Include="SpellChecker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
