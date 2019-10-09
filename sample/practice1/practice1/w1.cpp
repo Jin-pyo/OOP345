@@ -1,31 +1,19 @@
-#include<iostream>
-#include<vector>
-#include<string>
+// Function Objects
+ // function_object.cpp
 
-
-int sum(int a, int b)
-{
-	return a + b;
-}
-
-int sub(int a, int b)
-{
-	return a - b;
-}
-
-int multiple(int a, int b)
-{
-	return a * b;
-}
+#include <iostream>
 
 int main()
 {
-	int a=2, b=6;
-	int(*fncptr[3])(int, int) = { sum,sub,multiple };
+	int a = 5;
+	int b = 2;
 	
-	for (int i = 0; i < sizeof(fncptr) / sizeof(fncptr[0]); i++)
+	int result = [&]()->int
 	{
-		std::cout << fncptr[i](a, b) << std::endl;
-	}
+		return [&]()->int {return a+b; }();
+	}();
+
+	std::cout << result << std::endl;
+
 	return 0;
 }
