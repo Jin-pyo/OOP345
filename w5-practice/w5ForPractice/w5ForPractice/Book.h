@@ -24,7 +24,7 @@ namespace sdds
 		const size_t& year() const { return this->m_year; };
 		double& price() { return m_price; };
 
-	
+		
 
 		template<typename T>
 		void fixSpelling(T spellChecker)

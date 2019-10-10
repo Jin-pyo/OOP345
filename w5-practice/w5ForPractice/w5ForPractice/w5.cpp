@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 	//            and save the new price in the book object
 	//       - if the book was published in UK between 1990 and 1999 (inclussive),
 	//            multiply the price with "gbpToCadRate" and save the new price in the book object
-	auto change = [=](Book& li) {
+	auto updatePrice = [=](Book& li) {
 
 
 		if (li.country() == std::string("US"))
@@ -92,7 +92,7 @@ int main(int argc, char** argv)
 
 	for (size_t i = 0; i < cnt; i++)
 	{
-		change(library[i]);
+		updatePrice(library[i]);
 	}
 
 	std::cout << "-----------------------------------------\n";
