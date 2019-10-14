@@ -1,4 +1,12 @@
 
+// Name:Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: Oct 8,2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 #include<iostream>
 #include<utility>
 #include"ConfirmationSender.h"
@@ -21,10 +29,14 @@ namespace sdds
 	{
 		if (this != &other)
 		{
-
+			delete[] m_address;
 			m_num = other.m_num;
-			m_address = other.m_address;
-
+			
+			m_address = new const Reservation*[m_num];
+			for (size_t i = 0; i < m_num; i++)
+			{
+				m_address[i] = other.m_address[i];
+			}
 		}
 		return *this;
 	}
@@ -83,31 +95,35 @@ namespace sdds
 			if (found)
 			{
 				m_address[i] = m_address[i + 1];
-				m_address[m_num - 1] = nullptr;
-				m_num--;
+				
 			}
 		}
-
+		if (found)
+		{
+			m_address[m_num - 1] = nullptr;
+			m_num--;
+		}
 		return *this;
 	}
 
 	std::ostream& operator<<(std::ostream& os, const ConfirmationSender& obj)
 	{
+		os << "-----------------------" << std::endl;
+		os << "Confirmation to Send" << std::endl;
+		os << "-----------------------" << std::endl;
 		if (obj.m_num == 0)
 		{
 			os << "This object is empty!" << std::endl;
 		}
 		else
 		{
-			os << obj.m_num << std::endl;
-			os << "Fancy Resturnat" << std::endl;
-			os << "-----------------------" << std::endl;
 			for (size_t i = 0; i < obj.m_num; i++)
 			{
 
 				os << *obj.m_address[i];
 			}
 		}
+		os << "-----------------------" << std::endl;
 		return os;
 	}
 }

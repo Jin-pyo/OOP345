@@ -1,3 +1,11 @@
+// Name:Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: Oct 8,2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 #include <iostream>
 #include <sstream>
 #include <iomanip>
@@ -30,6 +38,8 @@ namespace sdds
 		posS = posE + 1;
 		posE = m_res.find(',', posS);
 		this->check(m_email = m_res.substr(posS, posE - posS));
+		this->m_email.push_back('>');
+		this->m_email.insert(0, "<");
 
 
 		posS = posE + 1;
@@ -49,10 +59,9 @@ namespace sdds
 
 	std::ostream& operator<<(std::ostream& os, const Reservation& res)
 	{
-		std::ostringstream tmp;
-		tmp << "<" << res.m_email << ">";
+		
 		os << "Reservation " << res.m_reservation_id << " : " << std::setw(10) << std::right << res.m_reservation_name
-			<< "  " << std::left << std::setw(20) << tmp.str() << "    ";
+			<< "  " << std::left << std::setw(20) << res.m_email << "    ";
 		if (res.m_hour >= 6 && res.m_hour <= 9) {
 			os << "Breakfast on day ";
 		}
