@@ -44,7 +44,12 @@ namespace sdds
 		{
 			delete[]m_reservation;
 			this->m_num = other.m_num;
-			this->m_reservation = other.m_reservation;
+			
+			m_reservation = new Reservation[m_num];
+			for (size_t i = 0; i < m_num; i++)
+			{
+				m_reservation[i] = other.m_reservation[i];
+			}
 		}
 		return *this;
 	}
