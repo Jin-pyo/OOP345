@@ -1,3 +1,11 @@
+// Name:Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: Oct 8,2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 #include"Restaurant.h"
 #include"Reservation.h"
 #include<iostream>
@@ -70,20 +78,26 @@ namespace sdds
 
 	std::ostream& operator<<(std::ostream& os, const Restaurant& obj)
 	{
+
+		os << "-----------------------" << std::endl;
+		os << "Fancy Resturnat" << std::endl;
+		os << "-----------------------" << std::endl;
 		if (obj.m_num == 0 && obj.m_reservation == nullptr)
 		{
+
 			os << "This object is empty!" << std::endl;
 		}
 		else
 		{
-			os << "Fancy Resturnat" << std::endl;
-			os << "-----------------------" << std::endl;
+			
 			for (size_t i = 0; i < obj.m_num; i++)
 			{
 
 				os << obj.m_reservation[i];
 			}
 		}
+
+		os << "-----------------------" << std::endl;
 		return os;
 	}
 
