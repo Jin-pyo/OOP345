@@ -11,7 +11,7 @@ namespace sdds
 		T* m_items = nullptr;
 		size_t m_cnt = 0;
 
-		void(*onItemAdded)(const Collection&, const T&)nullptr;
+		void(*onItemAdded)(const Collection&, const T&)=nullptr;
 	public:
 		Collection(std::string name) { this->m_name = name; }
 		collection(const Collection&) = delete;
@@ -31,17 +31,23 @@ namespace sdds
 
 		Collection& operator+=(const T& item)
 		{
-			for(auto i=0u;i<m_cnt;++i)
-				if(this->m_items)
-		}
+			for (auto i = 0u; i < m_cnt; ++i)
+				if (this->m_items[i].title() == item.title())
+					return *this;
 
-		//nex picture
+			T* tmp = new T[m_cnt + 1];
+			for (auto i = 0u; i < m_cnt; ++i)
+				tmp[i] = this->m_items[i];
+			tmp[m_cnt] = item;
+
+			deletep[]m_items;
+			m_items = tmp;
 			++m_cnt;
 
-		if (onItemAdded != nullptr)
-			onItemAdded(*this, m_items[m_cnt - 1]);
-		return *this;
-
+			if (onItemAdded != nullptr)
+				onItemAdded(*this, m_items[m_cnt - 1]);
+			return *this;
+		}
 		T& operator[](size_t idx) const
 		{
 			if (idx >= m_cnt)
@@ -67,7 +73,7 @@ namespace sdds
 			return nullptr;
 		}
 
-		operator //I have to use operator
+		operator //I have to do operator
 	};
 
 }

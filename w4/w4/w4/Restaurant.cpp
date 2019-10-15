@@ -1,3 +1,11 @@
+// Name:Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: Oct 8,2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 #include"Restaurant.h"
 #include"Reservation.h"
 #include<iostream>
@@ -36,7 +44,12 @@ namespace sdds
 		{
 			delete[]m_reservation;
 			this->m_num = other.m_num;
-			this->m_reservation = other.m_reservation;
+			
+			m_reservation = new Reservation[m_num];
+			for (size_t i = 0; i < m_num; i++)
+			{
+				m_reservation[i] = other.m_reservation[i];
+			}
 		}
 		return *this;
 	}
@@ -70,20 +83,26 @@ namespace sdds
 
 	std::ostream& operator<<(std::ostream& os, const Restaurant& obj)
 	{
+
+		os << "-----------------------" << std::endl;
+		os << "Fancy Resturnat" << std::endl;
+		os << "-----------------------" << std::endl;
 		if (obj.m_num == 0 && obj.m_reservation == nullptr)
 		{
+
 			os << "This object is empty!" << std::endl;
 		}
 		else
 		{
-			os << "Fancy Resturnat" << std::endl;
-			os << "-----------------------" << std::endl;
+			
 			for (size_t i = 0; i < obj.m_num; i++)
 			{
 
 				os << obj.m_reservation[i];
 			}
 		}
+
+		os << "-----------------------" << std::endl;
 		return os;
 	}
 

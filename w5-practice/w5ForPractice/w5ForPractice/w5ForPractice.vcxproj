@@ -126,11 +126,14 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Movie.cpp" />
     <ClCompile Include="SpellChecker.cpp" />
-    <ClCompile Include="w5.cpp" />
+    <ClCompile Include="w5.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="w5_at_home.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="Collection.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="SpellChecker.h" />
   </ItemGroup>

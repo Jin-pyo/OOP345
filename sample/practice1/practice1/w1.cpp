@@ -1,19 +1,25 @@
-// Function Objects
- // function_object.cpp
-
-#include <iostream>
+#include<iostream>
+using namespace std;
 
 int main()
 {
-	int a = 5;
-	int b = 2;
-	
-	int result = [&]()->int
+	int i = 0;
+
+	for (i; i < 5; i++)
 	{
-		return [&]()->int {return a+b; }();
-	}();
+		cout << i << endl;
+	}
 
-	std::cout << result << std::endl;
+	cout << "-------------" << endl;
+	cout << i << endl;
+	cout << "-------------" << endl;
+	i = 0;
 
-	return 0;
+	for (i; i < 5; ++i)
+	{
+		cout << i << endl;
+	}
+
+	cout << "-------------" << endl;
+	cout << i;
 }

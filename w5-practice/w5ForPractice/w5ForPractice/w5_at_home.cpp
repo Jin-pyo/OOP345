@@ -55,6 +55,12 @@ int main(int argc, char** argv)
 			return 1;
 		}
 
+		std::string strBook;
+		for (auto i = 0; i < 4; i++)
+		{
+			
+		}
+
 		library.setObserver(bookAddedObserver);
 
 		// TODO: add the rest of the books from the file.
