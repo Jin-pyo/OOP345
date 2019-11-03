@@ -5,11 +5,13 @@
 //
 // I confirm that the content of this file is created by me,
 //   with the exception of the parts provided to me by my professor.
-#include "Racecar.h"
+#include"Racecar.h"
+#include"Car.h"
+#include<iostream>
 
 namespace sdds
 {
-	Racecar::Racecar(std::istream& in)
+	Racecar::Racecar(std::istream& in):Car(in)
 	{
 
 	}
