@@ -47,7 +47,7 @@ int main(int argc, char** argv)
 		//       - read one line at a time, and pass it to the Book constructor
 		//       - store each book read into the collection "library" (use the += operator)
 		//       - lines that start with "#" are considered comments and should be ignored
-		std::ifstream file(argv[1]);
+		std::ifstream file("books.txt");
 		if (!file) {
 			std::cerr << "ERROR: Cannot open file [" << argv[1] << "].\n";
 			return 1;
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 		// TODO: add the rest of the books from the file.
 		for (auto i = 4; i < 7; ++i) {
 			std::getline(file, strBook);
-			if (file) {	
+			if (file) {
 				if (strBook[0] != '#')
 					library += Book(strBook);
 				else
@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 		//       - read one line at a time, and pass it to the Movie constructor
 		//       - store each movie read into the array "movies"
 		//       - lines that start with "#" are considered comments and should be ignored
-		std::ifstream file(argv[2]);
+		std::ifstream file("movies.txt");
 		if (!file) {
 			std::cerr << "ERROR: Cannot open file [" << argv[2] << "].\n";
 			return 1;
@@ -171,14 +171,14 @@ int main(int argc, char** argv)
 	std::cout << "-----------------------------------------\n";
 	std::cout << "Testing the functor\n";
 	std::cout << "-----------------------------------------\n";
-	for (auto i = 3u; i <= 4u; ++i) {
+	//for (auto i = 3u; i <= 4u; ++i) {
 		try {
 			// TODO: The following statement can generate generate an exception
 			//         write code to handle the exception
 			//       If an exception occurs print a message in the following format
 			//EXCEPTION: ERROR_MESSAGE<endl>
 			//         where ERROR_MESSAGE is extracted from the exception object.
-			SpellChecker sp(argv[i]);
+			SpellChecker sp("words.txt");
 			for (auto j = 0u; j < theCollection.size(); ++j)
 				theCollection[j].fixSpelling(sp);
 			for (auto j = 0u; j < library.size(); ++j)
@@ -187,7 +187,7 @@ int main(int argc, char** argv)
 		catch (const char* error) {
 			std::cout << "EXCEPTION: " << error << "\n";
 		}
-	}
+	
 	std::cout << "--------------- Movies ------------------\n";
 	std::cout << theCollection;
 	std::cout << "--------------- Books -------------------\n";

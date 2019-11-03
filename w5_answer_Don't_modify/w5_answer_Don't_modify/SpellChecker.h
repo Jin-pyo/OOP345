@@ -1,4 +1,3 @@
-   with the exception of the parts provided to me by my professor.
 
 #ifndef SDDS_SPELLCHECKER_H
 #define SDDS_SPELLCHECKER_H
