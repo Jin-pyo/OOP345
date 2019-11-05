@@ -7,13 +7,15 @@
 //   with the exception of the parts provided to me by my professor.
 #include<iostream>
 #include<sstream>
-#include "Utilities.h"
-#include"Vehicle.h"
 #include"Car.h"
+#include"Racecar.h"
+#include"Utilities.h"
+#include"Vehicle.h"
+
 
 namespace sdds
 {
-	Vehicle* Utilities::createInstance(std::istream& in)
+	Vehicle* createInstance(std::istream& in)
 	{
 		std::string check;
 
@@ -33,7 +35,7 @@ namespace sdds
 			}
 			else if (type == 'r' || type == 'R')
 			{
-				return new Racecar(ss);
+				return new Racecar(tmp);
 			}
 			else
 			{

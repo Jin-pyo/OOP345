@@ -5,22 +5,23 @@
 //
 // I confirm that the content of this file is created by me,
 //   with the exception of the parts provided to me by my professor.
-#include "Autoshop.h"
-#include<iostream>
 
+#include"Autoshop.h"
+#include<iostream>
+#include"Vehicle.h"
+#include"Vehicle.h"
 
 namespace sdds
 {
-	Autoshop& Autoshop::operator +=(Vehicle* theVehicle)
+	Autoshop& Autoshop::operator+=(Vehicle* theVehicle)
 	{
 		this->m_vehicles.push_back(theVehicle);
 		return *this;
 	}
 	void Autoshop::display(std::ostream& out)const
 	{
-		
 		out << "--------------------------------" << std::endl;
-		out << "| Cars in the autoshop!|" << std::endl;
+		out << "| Cars in the autoshop!        |" << std::endl;
 		out << "--------------------------------" << std::endl;
 		for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++)
 		{
@@ -28,5 +29,14 @@ namespace sdds
 			out << std::endl;
 		}
 		out << "--------------------------------" << std::endl;
+	}
+
+	Autoshop::~Autoshop()
+	{
+		while (!this->m_vehicles.empty())
+		{
+			delete this->m_vehicles.back();
+			this->m_vehicles.pop_back();
+		}
 	}
 }

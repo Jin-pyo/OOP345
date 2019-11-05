@@ -9,19 +9,32 @@
 #define AUTOSHOP_H
 
 #include<vector>
+#include<list>
+
 #include"Vehicle.h"
 
 namespace sdds
 {
-	class Autoshop :public Vehicle
+	class Autoshop
 	{
 		std::vector<Vehicle*> m_vehicles;
 	public:
-		Autoshop& operator +=(Vehicle* theVehicle);
+		Autoshop() = default;
+		~Autoshop();
+		Autoshop& operator+=(Vehicle* theVehicle);
 		void display(std::ostream& out)const;
 
-
-
+		template<typename T>
+		void select(T test, std::list<const Vehicle*>& vehicles)
+		{
+			for (auto it = m_vehicles.begin(); it != m_vehicles.end(); it++)
+			{
+				if (test(*it))
+				{
+					vehicles.push_back(*it);
+				}
+			}
+		}
 	};
 }
 #endif // !AUTOSHOP_H

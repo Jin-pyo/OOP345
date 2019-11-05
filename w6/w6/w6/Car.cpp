@@ -5,7 +5,9 @@
 //
 // I confirm that the content of this file is created by me,
 //   with the exception of the parts provided to me by my professor.
-#include "Car.h"
+
+#include"Car.h"
+
 #include<iostream>
 #include<string>
 #include <iomanip>
@@ -43,7 +45,7 @@ namespace sdds
 		std::getline(info, check, ',');
 		try
 		{
-			m_topSpeed = std::stoi(trim(check));
+			m_topSpeed =std::stoi(trim(check));
 		}
 		catch (...)
 		{
@@ -61,9 +63,9 @@ namespace sdds
 	}
 	void Car::display(std::ostream& os)const
 	{
-		os << "|" << std::setw(10) << this->m_model
-			<< "|" << std::setw(6) << std::left << this->m_condition
-			<< "|" << std::setw(6) << std::setprecision(2) << std::fixed << this->m_topSpeed;
+		os << "| " << std::setw(10) << std::right << this->m_model
+			<< " | " << std::setw(6) << std::left << this->condition()
+			<< " | " << std::setw(6) << std::setprecision(2) << std::fixed << topSpeed()<<" | ";
 
 	}
 }

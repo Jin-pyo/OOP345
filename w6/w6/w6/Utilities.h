@@ -8,14 +8,14 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
+#include"Vehicle.h"
+
 namespace sdds
 {
-	class Utilities:public Vehicle
-	{
-	public:
+	
 		Vehicle* createInstance(std::istream& in);
 
-	};
+	
 }
 
 #endif // !UTILITY_H

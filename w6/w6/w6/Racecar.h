@@ -9,6 +9,9 @@
 #define RACECAR_H
 
 #include<iostream>
+#include"Utilities.h"
+#include"Vehicle.h"
+#include"Autoshop.h"
 #include"Car.h"
 
 namespace sdds
@@ -20,7 +23,7 @@ namespace sdds
 	public:
 		Racecar(std::istream& in);
 		void display(std::ostream& out) const;
-		double topSpped() const;
+		double topSpeed() const;
 
 	};
 }

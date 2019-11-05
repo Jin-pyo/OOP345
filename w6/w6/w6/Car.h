@@ -9,7 +9,9 @@
 #define CAR_H
 
 #include<iostream>
+
 #include"Vehicle.h"
+
 
 namespace sdds
 {
@@ -17,7 +19,7 @@ namespace sdds
 	{
 		std::string m_model;
 		std::string m_condition;
-		int m_topSpeed;
+		double m_topSpeed;
 	public:
 		Car(std::istream&);
 		std::string condition()const;
