@@ -12,12 +12,24 @@ namespace sdds
 {
 	std::ostream& operator<<(std::ostream& out, const Song& theSong)
 	{
-		out << "| " << std::setw(20)<<std::left << theSong.m_title
-			<< " | " << std::setw(15)<<std::left << theSong.m_artist
-			<< " | " << std::setw(20)<<std::left << theSong.m_album
-			<< " | " << std::setw(6)<<std::right << theSong.m_year
-			<< " | " << theSong.m_length/60<<":"<< std::setw(2)<<std::setprecision(2) << std::fixed << theSong.m_length%60
-			<< " | " << theSong.m_price<<"|";
+		int second;
+		second = theSong.m_length % 60;
+		out << "| " << std::setw(20) << std::left << theSong.m_title
+			<< " | " << std::setw(15) << std::left << theSong.m_artist
+			<< " | " << std::setw(20) << std::left << theSong.m_album
+			<< " | " << std::setw(6) << std::right;
+		if (theSong.m_year != 0)
+			out << theSong.m_year;
+		else
+			out << "";
+		out << " | " << theSong.m_length / 60 << ":";
+
+		if (second < 10)
+		{
+			out << "0";
+		}
+		out<<second
+		<<" | " << theSong.m_price<<" | ";
 
 		return out;
 	}
