@@ -124,7 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SongCollection.cpp" />
-    <ClCompile Include="w7_lab.cpp" />
+    <ClCompile Include="w7_athome.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SongCollection.h" />

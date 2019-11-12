@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/12/2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -26,7 +34,7 @@ int main(int argc, char** argv)
 		std::cout << std::setw(3) << i + 1 << ": " << argv[i] << '\n';
 	std::cout << "--------------------------\n\n";
 
-	sdds::SongCollection theCollection("songs.txt");
+	sdds::SongCollection theCollection(argv[1]);
 
 	printHeader("The original collection");
 	theCollection.display(std::cout);

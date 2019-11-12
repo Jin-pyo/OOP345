@@ -18,7 +18,7 @@
     <ClCompile Include="SongCollection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="w7_lab.cpp">
+    <ClCompile Include="w7_athome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
