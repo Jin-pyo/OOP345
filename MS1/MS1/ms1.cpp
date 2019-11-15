@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181	
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/17/2019
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -21,9 +29,9 @@ int main(int argc, char** argv)
 	//**************//
 	vector<Item> theInventory;
 	Utilities::setDelimiter(',');
-	loadInventory(argv[1], theInventory);
+	loadInventory("Inventory1.dat", theInventory);
 	Utilities::setDelimiter('|');
-	loadInventory(argv[2], theInventory);
+	loadInventory("Inventory2.dat", theInventory);
 
 	cout << "=======================" << endl;
 	cout << "= Inventory (summary) =" << endl;
