@@ -29,9 +29,9 @@ int main(int argc, char** argv)
 	//**************//
 	vector<Item> theInventory;
 	Utilities::setDelimiter(',');
-	loadInventory("Inventory1.dat", theInventory);
+	loadInventory(argv[1], theInventory);
 	Utilities::setDelimiter('|');
-	loadInventory("Inventory2.dat", theInventory);
+	loadInventory(argv[2], theInventory);
 
 	cout << "=======================" << endl;
 	cout << "= Inventory (summary) =" << endl;
