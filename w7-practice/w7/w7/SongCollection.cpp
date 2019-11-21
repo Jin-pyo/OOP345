@@ -3,6 +3,7 @@
 #include<fstream>
 #include<algorithm>
 #include<iomanip>
+#include<numeric>
 
 namespace sdds
 {
@@ -69,7 +70,59 @@ namespace sdds
 
 			out << song << std::endl;
 			});
+		
+		out << std::setw(89) << std::setfill('-') << '\n' << std::setfill(' ') << std::endl;
+
+		int sum = std::accumulate(m_songs.begin(), m_songs.end(), 0, [](int x, Song song) {
+			return x + song.m_length;
+			});
+		out << "| " << std::setw(74) << std::right << "Total Listening Time: "
+			<< (sum / 60) / 60 << " : " << (sum % 3600)/60 << " : " << sum % 60<<" |"<<std::endl;
+
+
 	}
+
+	void SongCollection::sort(std::string filed)
+	{
+		if (filed == "title")
+		{
+			std::sort(m_songs.begin(), m_songs.end(), [](Song& a, Song& b) {
+				return a.m_title < b.m_title;
+				});
+		}
+		else if (filed == "album")
+			std::sort(m_songs.begin(), m_songs.end(), [](const Song& a, const Song& b) {return a.m_album < b.m_album; });
+		else if (filed == "length")
+			std::sort(m_songs.begin(), m_songs.end(), [](const Song& a, const Song& b) {return a.m_length < b.m_length; });
+	}
+	void SongCollection::cleanAlbum()
+	{
+		for_each(m_songs.begin(), m_songs.end(), [](Song& a) {
+			if (a.m_album == "[None]")
+				a.m_album = " ";
+			});
+	}
+	bool SongCollection::inCollection(std::string name) const
+	{
+		auto check = std::find_if(m_songs.begin(), m_songs.end(), [&name](const Song& song) {
+				return name == song.m_artist;
+			});
+		return check!=m_songs.end();
+	}
+	std::list<Song> SongCollection::getSongsForArtist(std::string name) const
+	{
+		auto cnt = std::count_if(m_songs.begin(), m_songs.end(), [&name](const Song& song) {
+			return song.m_artist == name;
+			});
+		std::list<Song> tmp(cnt);
+
+		std::copy_if(m_songs.begin(), m_songs.end(), tmp.begin(), [&name](const Song& song) {
+			return song.m_artist == name;
+			});
+
+		return tmp;
+	}
+
 
 
 	std::ostream& operator<<(std::ostream& out, const Song& theSong)

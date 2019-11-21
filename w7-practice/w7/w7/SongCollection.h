@@ -3,6 +3,7 @@
 
 #include<string>
 #include<vector>
+#include<list>
 
 namespace sdds
 {
@@ -23,6 +24,10 @@ namespace sdds
 	public:
 		SongCollection(std::string);
 		void display(std::ostream& out) const;
+		void sort(std::string filed);
+		void cleanAlbum();
+		bool inCollection(std::string name) const;
+		std::list<Song> getSongsForArtist(std::string name) const;
 	};
 
 	std::ostream& operator<<(std::ostream& out, const Song& theSong);
