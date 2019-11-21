@@ -1,5 +1,10 @@
-// Workshop 8 - Smart Pointers
-// 2019/11 - Cornel
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/19/2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
 
 #ifndef SDDS_ELEMENT_H
 #define SDDS_ELEMENT_H
@@ -82,6 +87,12 @@ namespace sdds {
 		}
 
 		// TODO: add a function here to validate the price
+		void validate() {
+			if (m_price < 0.0)
+			{
+				throw std::string("*** Negative prices are invalid ***");
+			}
+		}
 
 		void display(std::ostream& os) const {
 			os << std::setw(FWD) << m_desc

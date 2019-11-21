@@ -1,3 +1,12 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/19/2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
+
 #ifndef SDDS_LIST_H
 #define SDDS_LIST_H
 // Workshop 8 - Smart Pointers
@@ -31,8 +40,17 @@ namespace sdds {
 		size_t size() const { return list.size(); }
 		const T& operator[](size_t i) const { return list[i]; }
 
+		// TODO: Overload the += operator with a smart pointer
+		//       as a second operand.
+		void operator+=(std::unique_ptr<T> pointer) {
+			list.push_back(*pointer);
+		}
 		// TODO: Overload the += operator with a raw pointer
 		//       as a second operand.
+		void operator+=(T* pointer)
+		{
+			list.push_back(*pointer);
+		}
 
 		void display(std::ostream& os) const {
 			os << std::fixed << std::setprecision(2);
@@ -48,3 +66,7 @@ namespace sdds {
 	}
 }
 #endif
+
+	
+
+		
