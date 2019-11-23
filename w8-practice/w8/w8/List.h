@@ -38,6 +38,10 @@ namespace sdds {
 			list.push_back(*pointer);
 		}
 
+		void operator+=(unique_ptr<T> pointer)
+		{
+			list.push_back(*pointer);
+		}
 		
 
 		void display(std::ostream& os) const {
