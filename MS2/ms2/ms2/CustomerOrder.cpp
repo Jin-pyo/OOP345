@@ -123,7 +123,7 @@ void CustomerOrder::display(std::ostream& os) const
 	{
 		os << "[" << std::setw(6) << std::setfill('0') << m_lstItem[i]->m_serialNumber << "] ";
 		os << std::setw(m_widthField) << std::setfill(' ') << m_lstItem[i]->m_itemName << " - ";
-		if (m_lstItem[i]->m_fillState == true) os << "FILLED";
+		if (m_lstItem[i]->m_fillState) os << "FILLED";
 		else os << "MISSING";
 
 		os << std::endl;
