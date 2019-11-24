@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181	
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/17/2019
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -27,9 +35,9 @@ int main(int argc, char** argv)
 	{
 		// Milestone 1
 		Utilities::setDelimiter(',');
-		loadFromFile<Item>("Inventory1.dat", theInventory);
+		loadFromFile<Item>(argv[1], theInventory);
 		Utilities::setDelimiter('|');
-		loadFromFile<Item>("Inventory2.dat", theInventory);
+		loadFromFile<Item>(argv[2], theInventory);
 
 		cout << "=======================" << endl;
 		cout << "= Inventory (summary) =" << endl;
@@ -60,7 +68,7 @@ int main(int argc, char** argv)
 
 	{
 		// Milestone 2
-		loadFromFile<CustomerOrder>("CustomerOrders.dat", theOrders);
+		loadFromFile<CustomerOrder>(argv[3], theOrders);
 
 		cout << "=======================" << endl;
 		cout << "=        Orders       =" << endl;
@@ -111,24 +119,24 @@ int main(int argc, char** argv)
 
 		cout << "CustomerOrders::fillItem()" << endl; // Test #6
 		cout << "getOrderFillState(): "
-		     << (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
-		     << endl;
+			<< (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
+			<< endl;
 
 		tmp2.fillItem(theInventory[0], cout);
 		cout << "getItemFillState(\"CPU\"): "
-			 << (tmp2.getItemFillState("CPU") ? "FILLED" : "MISSING")
-		     << endl;
+			<< (tmp2.getItemFillState("CPU") ? "FILLED" : "MISSING")
+			<< endl;
 
 		cout << "getOrderFillState(): "
-		     << (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
-		     << endl;
+			<< (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
+			<< endl;
 
 		for (size_t i = 0; i < theInventory.size(); i++)
 			tmp2.fillItem(theInventory[i], cout);
 
 		cout << "getOrderFillState(): "
-		     << (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
-		     << endl;
+			<< (tmp2.getOrderFillState() ? "FILLED" : "MISSING")
+			<< endl;
 	}
 	return 0;
 }

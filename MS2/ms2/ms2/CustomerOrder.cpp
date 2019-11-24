@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181	
+// Seneca email: jju3@myseneca.ca
+// Date of completion: 11/17/2019
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
 #include "CustomerOrder.h"
 #include"Utilities.h"
 #include<iostream>
