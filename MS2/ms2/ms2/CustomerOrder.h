@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
+
 #include<iostream>
 #include<string>
 #include"Item.h"
@@ -20,7 +22,7 @@ class CustomerOrder
 	ItemInfo** m_lstItem;
 	static size_t m_widthField;
 public:
-	CustomerOrder() {};
+	CustomerOrder();
 	CustomerOrder(std::string&);
 	CustomerOrder(const CustomerOrder&) { throw "Copy Not allowed"; }
 	CustomerOrder& operator=(const CustomerOrder&) = delete;
@@ -37,3 +39,4 @@ public:
 
 };
 
+#endif

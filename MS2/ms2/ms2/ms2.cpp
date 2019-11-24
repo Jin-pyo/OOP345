@@ -27,9 +27,9 @@ int main(int argc, char** argv)
 	{
 		// Milestone 1
 		Utilities::setDelimiter(',');
-		loadFromFile<Item>(argv[1], theInventory);
+		loadFromFile<Item>("Inventory1.dat", theInventory);
 		Utilities::setDelimiter('|');
-		loadFromFile<Item>(argv[2], theInventory);
+		loadFromFile<Item>("Inventory2.dat", theInventory);
 
 		cout << "=======================" << endl;
 		cout << "= Inventory (summary) =" << endl;
@@ -60,7 +60,7 @@ int main(int argc, char** argv)
 
 	{
 		// Milestone 2
-		loadFromFile<CustomerOrder>(argv[3], theOrders);
+		loadFromFile<CustomerOrder>("CustomerOrders.dat", theOrders);
 
 		cout << "=======================" << endl;
 		cout << "=        Orders       =" << endl;
