@@ -8,10 +8,10 @@ namespace sdds
 {
 	class Autoshop
 	{
-		std::vector<Vehicle*> m_vehicles;
+		std::vector<Vehicle*>m_vehicles;
 	public:
 		Autoshop& operator+=(Vehicle* theVehicle);
-		void display(std::ostream& out)const;
+		void display(std::ostream& out);
 		~Autoshop();
 
 		template<typename T>
@@ -25,7 +25,6 @@ namespace sdds
 				}
 			}
 		}
-
 	};
 }
 

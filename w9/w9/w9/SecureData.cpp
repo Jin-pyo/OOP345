@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca	
+// Date of completion: 11/26/2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 // Workshop 9 - Multi-Threading
 // SecureData.cpp
 
@@ -63,14 +71,31 @@ namespace w9 {
 
 	void SecureData::code(char key)
 	{
+
+		char* tmp1;
+		char* tmp2;
+
+		tmp1 = new char[nbytes / 2];
+		tmp2 = new char[nbytes / 2];
+
+		for (int i = 0; i < nbytes / 2; i++)
+		{
+			tmp1[i] = this->text[i];
+		}
+		for (int i = 0; i < nbytes / 2; i++)
+		{
+			tmp2[i] = this->text[(nbytes / 2) + i];
+		}
 		// TODO (at-home): rewrite this function to use at least two threads
 		//         to encrypt/decrypt the text.
-		converter(text, key, nbytes, Cryptor());
-		//thread t1(std::bind(converter, text, key, nbytes / 2, Cryptor()));
-		//thread t2(std::bind(converter, text + nbytes / 2, key, nbytes - (nbytes / 2), Cryptor()));
+		//converter(text, key, nbytes, Cryptor());
+		thread h1(std::bind(converter, tmp1, key, nbytes / 2, Cryptor()));
+		thread h2(std::bind(converter, tmp2, key, nbytes - (nbytes / 2), Cryptor()));
 
-		//t1.join();
-		//t2.join();
+		h1.join();
+		h2.join();
+
+
 
 		encoded = !encoded;
 	}
@@ -83,37 +108,30 @@ namespace w9 {
 		else
 		{
 			// TODO: open a binary file for writing
-			std::ofstream f(file, std::ios::binary | std::ios::trunc);
-			if (!f)
-			{
-				throw std::string("\n***File could not be opened***\n");
-			}
+			std::ofstream f(file, std::ios::out | std::ios::binary);
+			if (!f) { throw std::string("\n*** Can't open file in backup ***\n"); }
 
 			// TODO: write data into the binary file
 			//         and close the file
-			f.write(text,nbytes);
+			f.write(this->text, this->nbytes);
 			f.close();
 		}
 	}
 
 	void SecureData::restore(const char* file, char key) {
 		// TODO: open binary file for reading
-		std::ifstream f(file, std::ios::in | ::ios::binary);
-		if (!f) {
-			throw ("\n***File could not be opened***\n");
-		}
+		std::ifstream f(file, std::ios::in | std::ios::binary);
+		if (!f) { throw std::string("\n*** Can't open file in restore ***\n"); };
 
 		// TODO: - allocate memory here for the file content
-		if (text)
-			delete[]text;
-
 		f.seekg(0, std::ios::end);
-		nbytes = (int)f.tellg();
-		text = new char[nbytes + 1];
+		this->nbytes = (int)f.tellg();
+		delete[]text;
+		text = new char[this->nbytes + 1];
 
 		// TODO: - read the content of the binary file
 		f.seekg(0, std::ios::beg);
-		f.read(text, nbytes);
+		f.read(text, this->nbytes);
 		f.close();
 
 		*ofs << "\n" << nbytes << " bytes copied from binary file "

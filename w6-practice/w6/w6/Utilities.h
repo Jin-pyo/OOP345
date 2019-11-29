@@ -5,8 +5,9 @@
 
 namespace sdds
 {
-	
-		Vehicle* createInstance(std::istream& in);
+	Vehicle* createInstance(std::istream& in);
+
+		
 	
 }
 

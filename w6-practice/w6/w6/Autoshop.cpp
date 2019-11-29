@@ -5,19 +5,22 @@ namespace sdds
 {
 	Autoshop& Autoshop::operator+=(Vehicle* theVehicle)
 	{
-		m_vehicles.push_back(theVehicle);
+		this->m_vehicles.push_back(theVehicle);
+
 		return *this;
 	}
-	void Autoshop::display(std::ostream& out)const
+	void Autoshop::display(std::ostream& out)
 	{
 		out << "--------------------------------" << std::endl;
 		out << "| Cars in the autoshop!        |" << std::endl;
 		out << "--------------------------------" << std::endl;
-		for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++)
+
+		for (auto i = this->m_vehicles.begin(); i != this->m_vehicles.end(); i++)
 		{
 			(*i)->display(out);
 			out << std::endl;
 		}
+
 		out << "--------------------------------" << std::endl;
 	}
 	Autoshop::~Autoshop()
@@ -25,7 +28,8 @@ namespace sdds
 		while (!m_vehicles.empty())
 		{
 			delete this->m_vehicles.back();
-			this->m_vehicles.pop_back();
+			m_vehicles.pop_back();
 		}
 	}
+
 }

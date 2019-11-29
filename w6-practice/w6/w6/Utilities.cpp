@@ -13,15 +13,17 @@ namespace sdds
 		std::string check;
 
 		std::getline(in, check);
+
 		std::stringstream tmp(check);
 
-		char type = '\0';
-		char delim = '\0';
+		char type;
+		char delim;
 
 		tmp >> type >> delim;
 
 		if (tmp)
 		{
+
 			if (type == 'c' || type == 'C')
 			{
 				return new Car(tmp);
@@ -35,7 +37,7 @@ namespace sdds
 				throw type;
 			}
 		}
-
 		return nullptr;
 	}
+		
 }

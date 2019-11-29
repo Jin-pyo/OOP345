@@ -12,26 +12,26 @@ namespace sdds
 		std::string m_artist;
 		std::string m_title;
 		std::string m_album;
-		int m_year;
 		int m_length;
+		int m_year;
 		double m_price;
 	};
 
 	class SongCollection
 	{
-		std::vector<sdds::Song> m_songs;
-		std::string& trim(std::string&);
+		std::vector<Song> m_songs;
 	public:
-		SongCollection(std::string);
-		void display(std::ostream& out) const;
-		void sort(std::string filed);
+		std::string& trim(std::string& line);
+		SongCollection(std::string file);
+		void display(std::ostream& out)const;
+		void sort(std::string name);
 		void cleanAlbum();
 		bool inCollection(std::string name) const;
-		std::list<Song> getSongsForArtist(std::string name) const;
+		std::list<Song> getSongForArtist(std::string name)const;
+		
 	};
 
 	std::ostream& operator<<(std::ostream& out, const Song& theSong);
-
 }
 
 #endif // !SONG_H

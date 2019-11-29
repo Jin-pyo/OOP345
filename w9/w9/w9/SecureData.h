@@ -1,3 +1,11 @@
+// Name: Jinpyo Ju
+// Seneca Student ID: 134444181
+// Seneca email: jju3@myseneca.ca	
+// Date of completion: 11/26/2019
+//
+// I confirm that the content of this file is created by me,
+//   with the exception of the parts provided to me by my professor.
+
 // Workshop 9 - Multi-Threading
 // SecureData.h
 #ifndef W9_SECUREDATA_H
