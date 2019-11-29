@@ -123,6 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TimedEvents.cpp" />
+    <ClCompile Include="w2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TimedEvents.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
