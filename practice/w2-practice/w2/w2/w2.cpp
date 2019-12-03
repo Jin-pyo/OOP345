@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <iomanip>
 #include <utility>
@@ -14,16 +13,7 @@ int main(int argc, char** argv)
 		std::cout << std::setw(3) << i + 1 << ": " << argv[i] << '\n';
 	std::cout << "--------------------------\n\n";
 
-	if (argc == 1)
-	{
-		std::cerr << "ERROR: Missing file name!\n";
-		return 1;
-	}
-	else if (argc != 2)
-	{
-		std::cerr << "ERROR: Too many arguments!\n";
-		return 2;
-	}
+	
 
 	TimedEvents t;
 	{
@@ -36,7 +26,7 @@ int main(int argc, char** argv)
 			<< std::setw(7) << a.size() << " records\n";
 
 		t.startClock();
-		Text b(argv[1]);
+		Text b("gutenberg_shakespeare.dat");
 		t.stopClock();
 		t.recordEvent("  1-arg Constructor");
 		std::cout << "  1-arg Constructor - b.size = "

@@ -1,78 +1,95 @@
-#include<fstream>
-#include<utility>
+// Workshop 2 - Copy and Move Semantics
+// Text.cpp
+// 2019/01/10 - Chris Szalwinski
+// 2019/09/13 - Cornel
+
+#include <fstream>
+#include <utility>
 #include "Text.h"
 
-namespace sdds
-{
-	Text::Text()
+namespace sdds {
+	// default constructor
+	//
+	Text::Text() : line(nullptr), n(0) {}
+
+	// constructor
+	//
+	Text::Text(const std::string& filename)
 	{
-		this->line = nullptr;
-		this->n = 0;
-	}
-	Text::Text(const std::string& name)
-	{
-		std::ifstream f(name.c_str());
+		std::ifstream f(filename.c_str());
+		n = 0;
+		line = nullptr;
 		if (!f)
 			return;
 
-		line = nullptr;
-		n = 0;
 		do
 		{
 			char c = f.get();
 			if (c == ' ')
 				n++;
-		} while (f.eof());
+		} while (!f.eof());
 
 		f.seekg(std::ios::beg);
 		line = new std::string[n];
-		for (int i= 0; i < n; i++)
+		for (int i = 0; i < n; i++)
 			std::getline(f, line[i], ' ');
 	}
-	Text::Text(const Text& obj)
+
+	// Copy Constructor
+	//
+	Text::Text(const Text& src)
 	{
-		*this = obj;
+		*this = src;
 	}
-	Text& Text::operator=(const Text& obj)
+
+	// Move Constructor
+	//
+	Text::Text(Text&& src)
 	{
-		if (this != &obj)
+		*this = std::move(src);
+		//*this = src;
+	}
+
+	// Copy Assignment Operator
+	//
+	Text& Text::operator=(const Text& src)
+	{
+		if (this != &src)
 		{
-			delete[]line;
+			n = src.n;
+
+			delete[] line;
 			line = nullptr;
-			n = 0;
-			n = obj.n;
 			if (n != 0)
 			{
+				line = new std::string[n];
 				for (int i = 0; i < n; i++)
-				{
-					line[i] = obj.line[i];
-				}
+					line[i] = src.line[i];
 			}
 		}
 		return *this;
 	}
-	Text::Text(Text&& obj)
+
+	// Move Assignment Operator
+	//
+	Text& Text::operator=(Text&& src)
 	{
-		*this = std::move(obj);
-	}
-	Text& Text::operator=(Text&& obj)
-	{
-		if (this != &obj)
+		if (this != &src)
 		{
-			delete[]line;
-			line = obj.line;
-			n = obj.n;
-			obj.line = nullptr;
-			obj.n = 0;
+			n = src.n;
+
+			delete[] line;
+			line = src.line;
+			src.n = 0;
+			src.line = nullptr;
 		}
+		return *this;
 	}
 
+	// Destructor
+	//
 	Text::~Text()
 	{
-		delete[]line;
-	}
-	size_t Text::size() const
-	{
-		return this->n;
+		delete[] line;
 	}
 }

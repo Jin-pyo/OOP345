@@ -1,30 +1,29 @@
-#ifndef TEXT_H
-#define TEXT_H
-#include<iostream>
-#include<string>
+// Workshop 2 - Copy and Move Semantics
+// Text.h
+// 2019/01/10 - Chris Szalwinski
+// 2019/09/13 - Cornel
+
+#ifndef SDDS_TEXT_H
+#define SDDS_TEXT_H
+
+#include <string>
+
 namespace sdds
 {
 	class Text
 	{
-		std::string* line;
-		size_t n;
-
+		std::string* line{ nullptr };
+		int n{ 0 };
 	public:
 		Text();
-		Text(const std::string& name);
+		Text(const std::string&);
 		Text(const Text&);
-		Text& operator=(const Text&);
 		Text(Text&&);
+		Text& operator=(const Text&);
 		Text& operator=(Text&&);
 		~Text();
-		size_t size() const;
 
-
+		size_t size() const { return n; }
 	};
 }
-
-
-
-#endif // !TEXT_H
-
-
+#endif
