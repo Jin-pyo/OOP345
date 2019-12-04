@@ -35,12 +35,12 @@ namespace sdds
 		std::string& trim(std::string& check);
 	public:
 		SongCollection(std::string);
-		void display(std::ostream& out) const;
-		void sort(std::string filed);
+		void display(std::ostream& out)const;
+		void sort(std::string name);
 		void cleanAlbum();
 		bool inCollection(std::string name) const;
 		std::list<Song> getSongsForArtist(std::string name) const;
-		
+
 	};
 
 }

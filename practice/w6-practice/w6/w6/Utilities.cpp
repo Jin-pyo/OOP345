@@ -10,34 +10,33 @@ namespace sdds
 {
 	Vehicle* createInstance(std::istream& in)
 	{
-		std::string check;
 
-		std::getline(in, check);
+		std::string line;
+		char type = '\0';
+		char delim = '\0';
 
-		std::stringstream tmp(check);
+		std::getline(in, line);
+		std::stringstream ss(line);
+		ss >> type >> delim;
 
-		char type;
-		char delim;
-
-		tmp >> type >> delim;
-
-		if (tmp)
+		if (ss)
 		{
-
-			if (type == 'c' || type == 'C')
+			switch (type)
 			{
-				return new Car(tmp);
-			}
-			else if (type == 'r' || type == 'R')
-			{
-				return new Racecar(tmp);
-			}
-			else
-			{
+			case 'c':
+			case 'C':
+				return new Car(ss);
+				break;
+			case 'r':
+			case 'R':
+				return new Racecar(ss);
+				break;
+			default:
 				throw type;
+				break;
 			}
 		}
 		return nullptr;
+
 	}
-		
 }

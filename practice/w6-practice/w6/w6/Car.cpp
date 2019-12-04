@@ -5,70 +5,56 @@
 
 namespace sdds
 {
-
-	std::string& Car::trim(std::string& line)
+	std::string& Car::trim(std::string& token)
 	{
-		while (line.length() > 0 && line[0] == ' ')
-			line.erase(0, 1);
-		while (line.length() > 0 && line[line.length() - 1] == ' ')
-			line.erase(line.length() - 1, 1);
-
-		return line;
+		while (token.length() > 0 && token[0] == ' ')
+			token.erase(0, 1);
+		while (token.length() > 0 && token[token.length() - 1] == ' ')
+			token.erase(token.length() - 1, 1);
+		return token;
 	}
-	Car::Car(std::istream& file)
+	Car::Car(std::istream& in)
 	{
-		std::string check;
+		std::string token;
+		std::getline(in, token, ',');
+		this->m_model = trim(token);
 
-		std::getline(file, check, ',');
-
-		this->m_maker = trim(check);
-
-		std::string tmp;
-		std::getline(file, check, ',');
-		tmp = trim(check);
-
-		if (tmp == "" || tmp == "n")
-		{
+		std::getline(in, token, ',');
+		this->m_condition = trim(token);
+		if (m_condition == "n"||m_condition=="")
 			this->m_condition = "new";
-		}
-		else if (tmp == "u")
-		{
+		else if (m_condition == "u")
 			this->m_condition = "used";
-		}
-		else if (tmp == "b")
-		{
+		else if (m_condition == "b")
 			this->m_condition = "broken";
-		}
 		else
-		{
-			throw "invalid data0000";
-		}
+			throw "Invalid record!";
 
-
-
-		std::getline(file, check, ',');
+		std::getline(in, token, ',');
 		try {
-			this->m_topSpeed = std::stoi(check);
+			m_topSpeed = std::stoi(trim(token));
 		}
 		catch (...)
 		{
-			throw "invalid data";
+			throw "Invalid record!";
 		}
 
-
 	}
+
 	std::string Car::condition() const
 	{
 		return this->m_condition;
 	}
-	double Car::topSpeed()const
+	double Car::topSpeed() const
 	{
 		return this->m_topSpeed;
 	}
-	void Car::display(std::ostream& out)const
+	void Car::display(std::ostream& out) const
 	{
-		out << "| " << std::setw(10) << std::right << this->m_maker
-			<< " | " << std::setw(6) << std::left << this->m_condition
-			<< " | " << std::setw(6) << std::setprecision(2) << std::fixed << topSpeed() << " | ";
+		out << " | " << std::setw(10) << this->m_model
+			<< " | " << std::setw(6)<<std::left << this->m_condition
+			<< " | " << std::setw(6) << std::fixed << std::setprecision(2) <<std::right<< this->m_topSpeed<<" |";
+
 	}
+	
 }

@@ -6,9 +6,10 @@ namespace sdds
 {
 	Racecar::Racecar(std::istream& in):Car(in)
 	{
-		std::string tmp;
-		std::getline(in, tmp,',');
-		this->m_booster = std::stod(tmp);
+		std::string line;
+		std::getline(in, line, ',');
+		m_booster=std::stod(Car::trim(line));
+	
 	}
 	void Racecar::display(std::ostream& out) const
 	{
@@ -17,6 +18,6 @@ namespace sdds
 	}
 	double Racecar::topSpeed() const
 	{
-		return Car::topSpeed() * (this->m_booster +1);
+		return Car::topSpeed() * (1 + this->m_booster);
 	}
 }
