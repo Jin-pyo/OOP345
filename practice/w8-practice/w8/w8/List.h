@@ -44,6 +44,7 @@ namespace sdds {
 		void operator+=(std::unique_ptr<T> pointer)
 		{
 			list.push_back(*pointer);
+			//list.push_back(std::move(*pointer));
 		}
 
 

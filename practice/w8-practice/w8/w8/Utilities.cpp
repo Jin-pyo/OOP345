@@ -47,7 +47,7 @@ namespace sdds {
 					product->validate();
 					priceList += std::move(product);
 					//priceList += product;
-					//List?? move??????? ????? ???
+					//If you do "move" in List.h
 					
 
 				}
