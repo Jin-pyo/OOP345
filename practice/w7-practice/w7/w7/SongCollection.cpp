@@ -16,26 +16,29 @@ namespace sdds
 
 		return line;
 	}
-	SongCollection::SongCollection(std::string filename)
+	
+	SongCollection::SongCollection(std::string file)
 	{
-		std::ifstream file(filename);
-		if (!file)
+		std::ifstream f(file);
+		if (!f)
 		{
-			throw "Can't open file";
+			throw "Invalid filename";
 		}
-		else
-		{
-			while (file)
+		
+			
+
+			while (f)
 			{
-				Song song;
 				std::string tmp;
-				std::getline(file, tmp);
-				
-				if (file)
+				Song song;
+				std::getline(f, tmp);
+
+				if (f)
 				{
-					trim(song.m_title = tmp.substr(0, 25));
+					trim(song.m_title = tmp.substr(0,25));
 					trim(song.m_artist = tmp.substr(25, 25));
 					trim(song.m_album = tmp.substr(50, 25));
+
 					try {
 						song.m_year = std::stoi(tmp.substr(75, 5));
 					}
@@ -47,33 +50,22 @@ namespace sdds
 					song.m_length = std::stoi(tmp.substr(80, 5));
 					song.m_price = std::stod(tmp.substr(85, 5));
 
-					m_songs.push_back(song);
+					this->m_songs.push_back(song);
 				}
 			}
-			file.close();
-		}
-	
+			f.close();
+
+		
+
+
 	}
-
-
-	void SongCollection::display(std::ostream& out)const
+	void SongCollection::display(std::ostream& out) const
 	{
-		std::for_each(m_songs.begin(), m_songs.end(), [&out](const Song& song) {
-
+		for_each(m_songs.begin(), m_songs.end(), [&out](const Song& song) {
 			out << song << std::endl;
 			});
-		int total = std::accumulate(m_songs.begin(), m_songs.end(),0, [](int x, const Song& b) {
-			return x+b.m_length;
-			});
-
-		int hour = total / 3600;
-		int min = (total % 3600) / 60;
-		int second = total % 60;
-
-		out << "| " << std::setw(74) << std::right << hour << " : " << min << " : " << second << " | " << std::endl;
-
 	}
-	
+
 	std::ostream& operator<<(std::ostream& out, const Song& theSong)
 	{
 		int tmp = 0;
@@ -98,53 +90,6 @@ namespace sdds
 		out << " | " << theSong.m_price << " | ";
 
 		return out;
-	
-
-	}
-
-	void SongCollection::sort(std::string name)
-	{
-		if (name == "title")
-		{
-			std::sort(this->m_songs.begin(), this->m_songs.end(), [](Song& a, Song& b) {
-				return a.m_title < b.m_title;
-				});
-		}
-		else if (name == "album")
-			std::sort(m_songs.begin(), m_songs.end(), [](const Song& a, const Song& b) {return a.m_album < b.m_album; });
-		else if (name == "length")
-			std::sort(m_songs.begin(), m_songs.end(), [](const Song& a, const Song& b) {return a.m_length < b.m_length; });
-
-	}
-	void SongCollection::cleanAlbum()
-	{
-		for_each(m_songs.begin(), m_songs.end(), [](Song& song) {
-			if (song.m_album[0] == '[')
-			{
-				song.m_album = " ";
-			}
-			});
-	}
-	bool SongCollection::inCollection(std::string name) const
-	{
-		auto check=std::find_if(m_songs.begin(), m_songs.end(), [name](const Song& song) {
-			return name == song.m_artist;
-			});
-		return check != m_songs.end();
-	}
-	std::list<Song> SongCollection::getSongForArtist(std::string name)const
-	{
-		int cnt = std::count_if(m_songs.begin(), m_songs.end(), [name](const Song song) {
-			return song.m_artist == name;
-			});
-
-		std::list<Song> tmp(cnt);
-
-		std::copy_if(m_songs.begin(), m_songs.end(), tmp.begin(), [&name](const Song& song) {
-			return song.m_artist == name;
-			});
-
-		return tmp;
 	}
 
 }
