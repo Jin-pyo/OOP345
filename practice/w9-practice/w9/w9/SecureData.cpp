@@ -63,9 +63,13 @@ namespace w9 {
 	{
 		// TODO (at-home): rewrite this function to use at least two threads
 		//         to encrypt/decrypt the text.
-		converter(text, key, nbytes, Cryptor());
+		//converter(text, key, nbytes, Cryptor());
 
+		thread t1(std::bind(converter, text, key, nbytes / 2, Cryptor()));
+		thread t2(std::bind(converter, text + nbytes / 2, key, nbytes - (nbytes / 2), Cryptor()));
 
+		t1.join();
+		t2.join();
 
 		encoded = !encoded;
 	}
@@ -78,19 +82,44 @@ namespace w9 {
 		else
 		{
 			// TODO: open a binary file for writing
-			std::ofstream f(file, std::ios::out | std::ios::binary);
+			std::ofstream f(file, std::ios::out || std::ios::binary);
+			if (!f)
+			{
+				throw std::string("Can't open the file to write");
+			}
+			else
+			{
+				f.write(this->text, this->nbytes);
+				f.close();
+			}
 
 			// TODO: write data into the binary file
 			//         and close the file
-			if (!f) { throw std::string("\n*** Can't open file in backup ***\n"); }
-
-			f.write()
+			
 		}
 	}
 
 	void SecureData::restore(const char* file, char key) {
 		// TODO: open binary file for reading
+		std::ifstream f(file, std::ios::in, std::ios::binary);
 
+		if (!f)
+		{
+			throw std::string("Can't open file to read");
+		}
+		else
+		{
+			f.seekg(0, std::ios::end);
+			this->nbytes = (int)f.tellg();
+			delete[] this->text;
+			text = new char[this->nbytes+1];
+
+
+			f.seekg(0, std::ios::beg);
+			f.read(this->text, this->nbytes);
+			f.close();
+
+		}
 
 		// TODO: - allocate memory here for the file content
 
