@@ -18,20 +18,13 @@ bool Product::Trace = true;
 
 int main(int argc, char** argv)
 {
-	cout << "Command Line: " << argv[0];
-	for (int i = 1; i < argc; i++)
-		cout << " " << argv[i];
-	cout << endl << endl;
+	
 
-	if (argc != 1) {
-		cerr << endl << "***Incorrect number of arguments***" << endl;
-		return 1;
-	}
-
+	
 	try {
-		sdds::List<sdds::Description> desc(argv[1]);
-		sdds::List<sdds::Price> priceBad(argv[2]);
-		sdds::List<sdds::Price> priceGood(argv[3]);
+		sdds::List<sdds::Description> desc("Descriptions.dat");
+		sdds::List<sdds::Price> priceBad("BadPrices.dat");
+		sdds::List<sdds::Price> priceGood("Prices.dat");
 
 		cout << setw(FWC) << "Code" << setw(FWD) << "Description" << endl;
 		cout << desc << endl;

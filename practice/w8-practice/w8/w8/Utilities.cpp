@@ -20,10 +20,11 @@ namespace sdds {
 			{
 				if (desc[i].code == price[j].code)
 				{
-					Product* product = new Product(desc[i].desc, price[j].price);
+					Product *product = new Product(desc[i].desc,price[j].price);
 					product->validate();
 					priceList += product;
 					delete product;
+
 				}
 			}
 		}
@@ -45,6 +46,10 @@ namespace sdds {
 					std::unique_ptr<Product> product(new Product(desc[i].desc, price[j].price));
 					product->validate();
 					priceList += std::move(product);
+					//priceList += product;
+					//List?? move??????? ????? ???
+					
+
 				}
 			}
 		}

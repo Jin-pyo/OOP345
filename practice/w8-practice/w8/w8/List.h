@@ -31,18 +31,21 @@ namespace sdds {
 		size_t size() const { return list.size(); }
 		const T& operator[](size_t i) const { return list[i]; }
 
-		// TODO: Overload the += operator with a raw pointer
+		// TODO: Overload the += operator with a smart pointer
 		//       as a second operand.
 		void operator+=(T* pointer)
+		{
+			std::cout << "[AG] overload with raw pointer" << std::endl;
+			list.push_back(*pointer);
+		}
+
+		// TODO: Overload the += operator with a raw pointer
+		//       as a second operand.
+		void operator+=(std::unique_ptr<T> pointer)
 		{
 			list.push_back(*pointer);
 		}
 
-		void operator+=(unique_ptr<T> pointer)
-		{
-			list.push_back(*pointer);
-		}
-		
 
 		void display(std::ostream& os) const {
 			os << std::fixed << std::setprecision(2);
