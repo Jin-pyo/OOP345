@@ -15,26 +15,22 @@ namespace sdds
 		char type = '\0';
 		char delim = '\0';
 
-		std::getline(in, line);
+		getline(in, line);
 		std::stringstream ss(line);
 		ss >> type >> delim;
 
 		if (ss)
 		{
-			switch (type)
+			if (type == 'c' || type == 'C')
 			{
-			case 'c':
-			case 'C':
 				return new Car(ss);
-				break;
-			case 'r':
-			case 'R':
-				return new Racecar(ss);
-				break;
-			default:
-				throw type;
-				break;
 			}
+			else if (type == 'r' || type == 'R')
+			{
+				return new Racecar(ss);
+			}
+			else
+				throw type;
 		}
 		return nullptr;
 

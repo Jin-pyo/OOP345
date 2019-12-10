@@ -24,9 +24,9 @@ namespace sdds
 		for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++)
 		{
 			(*i)->display(out);
-			out << std::endl;
+			std::cout << std::endl;
 		}
-		out << "--------------------------------\n";
+		
 
 	}
 }

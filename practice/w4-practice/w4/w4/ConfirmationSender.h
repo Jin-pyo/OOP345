@@ -10,8 +10,6 @@ namespace sdds
 		size_t m_cnt =0u;
 
 	public:
-
-
 		ConfirmationSender() {};
 		ConfirmationSender(const ConfirmationSender&);
 		ConfirmationSender& operator=(const ConfirmationSender&);

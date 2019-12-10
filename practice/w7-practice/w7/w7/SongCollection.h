@@ -24,8 +24,12 @@ namespace sdds
 	protected:
 		std::string& trim(std::string&);
 	public:
-		SongCollection(std::string file);
+		SongCollection(const char* filename);
 		void display(std::ostream& out) const;
+		void sort(std::string name);
+		void cleanAlbum();
+		bool inCollection(std::string name) const;
+		std::list<Song> getSongsForArtist(std::string name) const;
 		
 	};
 

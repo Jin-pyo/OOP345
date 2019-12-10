@@ -84,6 +84,7 @@ namespace sdds {
 		// TODO: add a function here to validate the price
 		void validate()
 		{
+			std::cout << "val" << this->m_id << std::endl;
 			if (this->m_price < 0.0)
 			{
 				throw std::string("Negative value!!");

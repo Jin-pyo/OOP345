@@ -15,28 +15,38 @@ namespace sdds
 	}
 	Car::Car(std::istream& in)
 	{
-		std::string token;
-		std::getline(in, token, ',');
-		this->m_model = trim(token);
+		std::string tmp;
+		std::getline(in, tmp, ',');
 
-		std::getline(in, token, ',');
-		this->m_condition = trim(token);
+		trim(this->m_model = tmp);
+
+		std::getline(in, tmp, ',');
+		trim(this->m_condition = tmp);
+
 		if (m_condition == "n"||m_condition=="")
-			this->m_condition = "new";
+		{
+			m_condition = "new";
+		}
 		else if (m_condition == "u")
-			this->m_condition = "used";
+		{
+			m_condition = "used";
+		}
 		else if (m_condition == "b")
-			this->m_condition = "broken";
+		{
+			m_condition = "broken";
+		}
 		else
-			throw "Invalid record!";
+		{
+			throw "Invalid data";
+		}
 
-		std::getline(in, token, ',');
-		try {
-			m_topSpeed = std::stoi(trim(token));
+		std::getline(in, tmp, ',');
+		try{
+		m_topSpeed = std::stod(trim(tmp));
 		}
 		catch (...)
 		{
-			throw "Invalid record!";
+			throw "invalid data";
 		}
 
 	}
@@ -52,8 +62,8 @@ namespace sdds
 	void Car::display(std::ostream& out) const
 	{
 		out << " | " << std::setw(10) << this->m_model
-			<< " | " << std::setw(6)<<std::left << this->m_condition
-			<< " | " << std::setw(6) << std::fixed << std::setprecision(2) <<std::right<< this->m_topSpeed<<" |";
+			<< " | " << std::setw(6)<<std::left << this->condition()
+			<< " | " << std::setw(6) << std::fixed << std::setprecision(2) <<std::right<< topSpeed()<<" |";
 
 	}
 	

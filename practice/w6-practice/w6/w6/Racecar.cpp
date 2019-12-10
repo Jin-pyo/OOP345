@@ -1,15 +1,17 @@
+// Workshop 6 - STL Containers
+// 2019/10/25 - Cornel
+
+#include <iostream>
+#include <string>
 #include "Racecar.h"
-#include<iostream>
-#include<string>
 
 namespace sdds
 {
-	Racecar::Racecar(std::istream& in):Car(in)
+	Racecar::Racecar(std::istream& in) : Car(in)
 	{
-		std::string line;
-		std::getline(in, line, ',');
-		m_booster=std::stod(Car::trim(line));
-	
+		std::string token;
+		std::getline(in, token, ',');
+		m_booster = std::stod(trim(token));
 	}
 	void Racecar::display(std::ostream& out) const
 	{
@@ -18,6 +20,6 @@ namespace sdds
 	}
 	double Racecar::topSpeed() const
 	{
-		return Car::topSpeed() * (1 + this->m_booster);
+		return Car::topSpeed() * (1 + m_booster);
 	}
 }

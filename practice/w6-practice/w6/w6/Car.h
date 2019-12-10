@@ -9,7 +9,7 @@ namespace sdds
 	{
 		std::string m_model;
 		std::string m_condition;
-		int m_topSpeed;
+		double m_topSpeed;
 	protected:
 		std::string& trim(std::string& token);
 	public:

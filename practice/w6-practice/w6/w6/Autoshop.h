@@ -17,15 +17,19 @@ namespace sdds
 		template<typename T>
 		void select(T test, std::list<const Vehicle*>& vehicles)
 		{
-			for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++)
-			{
-				if (test(*i))
+			
+			
+				for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++)
 				{
+					if(test(*i))
 					vehicles.push_back(*i);
 				}
-			}
+			
 		}
+		
 	};
+
+	
 }
 
 

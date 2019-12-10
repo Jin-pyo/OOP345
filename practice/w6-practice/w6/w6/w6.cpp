@@ -29,13 +29,13 @@ void loadData(const char* filename, sdds::Autoshop& as)
 			if (aVehicle)
 				as += aVehicle;
 		}
+		catch (const char* err)
+		{
+			std::cout << err << std::endl;
+		}
 		catch (char type)
 		{
-			std::cout << "Unrecognized record type: [TAG]" << std::endl;
-		}
-		catch (const char* error)
-		{
-			std::cout << error << std::endl;
+			std::cout << type << std::endl;
 		}
 	}
 }
@@ -61,14 +61,14 @@ int main(int argc, char** argv)
 	{
 		// TODO: Create a lambda expression that receives as parameter `const sdds::Vehicle*`
 		//         and returns true if the vehicle has a top speed >300km/h
-		auto fastVehicles = [](const sdds::Vehicle* test) {
-			if (test->topSpeed() > 300)
-			{
+		auto fastVehicles = [](const sdds::Vehicle* a) {
+
+			if (a->topSpeed() > 300)
 				return true;
-			}
 			else return false;
+
 		};
-			as.select(fastVehicles, vehicles);
+		as.select(fastVehicles, vehicles);
 		std::cout << "--------------------------------\n";
 		std::cout << "|       Fast Vehicles          |\n";
 		std::cout << "--------------------------------\n";
@@ -85,13 +85,11 @@ int main(int argc, char** argv)
 	{
 		// TODO: Create a lambda expression that receives as parameter `const sdds::Vehicle*`
 		//         and returns true if the vehicle is broken and needs repairs.
-		auto brokenVehicles = [](const sdds::Vehicle* test) {
-
-			if (test->condition() == "broken" || test->condition() == "repairs")
+		auto brokenVehicles = [](const sdds::Vehicle* a)
+		{
+			if (a->condition() == "broken")
 				return true;
 			else return false;
-
-
 		};
 			as.select(brokenVehicles, vehicles);
 		std::cout << "--------------------------------\n";

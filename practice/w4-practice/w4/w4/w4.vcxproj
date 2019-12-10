@@ -123,15 +123,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConfirmationSender.cpp" />
+    <ClCompile Include="ConfirmationSender.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Reservation.cpp" />
-    <ClCompile Include="Restaurant.cpp" />
+    <ClCompile Include="Restaurant.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="w4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConfirmationSender.h" />
+    <ClInclude Include="ConfirmationSender.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Reservation.h" />
-    <ClInclude Include="Restaurant.h" />
+    <ClInclude Include="Restaurant.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

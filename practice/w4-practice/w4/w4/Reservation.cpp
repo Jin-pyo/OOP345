@@ -14,34 +14,34 @@ namespace sdds
 	}
 	Reservation::Reservation(const std::string& m_res)
 	{
-		size_t start=0;
-		size_t end;
-
-		end = m_res.find(':');
+		size_t start;
+		size_t end=m_res.find(':');
 		this->m_id = m_res.substr(start, end);
 		trim(m_id);
-		
-		start = end + 1;
-		end = m_res.find(',',start);
-		this->m_name = m_res.substr(start, end - start);
-		trim(m_name);
 
 		start = end + 1;
-		end = m_res.find(',',start);
+		end = m_res.find(',', start);
+		this->m_name = m_res.substr(start, end - start);
+		trim(m_name);
+		
+		start = end + 1;
+		end = m_res.find(',', start);
 		this->m_email = m_res.substr(start, end - start);
 		trim(m_email);
 
 		start = end + 1;
-		end = m_res.find(',',start);
+		end = m_res.find(',', start);
 		this->m_partysize = std::stoi(m_res.substr(start, end - start));
 
 		start = end + 1;
-		end = m_res.find(',',start);
+		end = m_res.find(',', start);
 		this->m_day = std::stoi(m_res.substr(start, end - start));
-		
+
 		start = end + 1;
 		end = m_res.find(',', start);
-		this->m_time = std::stoi(m_res.substr(start,end-start));	
+		this->m_time = std::stoi(m_res.substr(start, end - start));
+		
+
 	}
 	std::ostream& operator<<(std::ostream& out, const Reservation& res)
 	{
