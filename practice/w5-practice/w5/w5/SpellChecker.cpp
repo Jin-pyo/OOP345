@@ -15,8 +15,7 @@ namespace sdds
 		{
 			for (int i= 0; i < 5; i++)
 			{
-				file >> m_badWords[i];
-				file >> m_goodWords[i];
+				file >> m_badWords[i] >> m_goodWords[i];
 			}
 		}
 	}

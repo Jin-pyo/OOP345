@@ -4,7 +4,7 @@
 #include<algorithm>
 #include<iomanip>
 #include<numeric>
-
+#include<sstream>
 namespace sdds
 {
 	std::string& SongCollection::trim(std::string& line)
@@ -30,23 +30,12 @@ namespace sdds
 				Song song;
 				std::string tmp;
 				std::getline(file, tmp);
-
+				std::stringstream ss(tmp);
 				if (file)
 				{
-					trim(song.m_title = tmp.substr(0,25)); // be carefule 0~25
-					trim(song.m_artist = tmp.substr(25, 25));
-					trim(song.m_album = tmp.substr(50, 25));
-
-					try {
-						song.m_year = std::stoi(tmp.substr(75, 5));
-					}
-					catch (...)
-					{
-						song.m_year = 0;
-					}
-					song.m_length = std::stoi(tmp.substr(80, 5));
-					song.m_price = std::stod(tmp.substr(85));
-
+					
+					ss >> song.m_title >> song.m_artist >> song.m_album>>song.m_year>>song.m_length>>song.m_price;
+					
 					m_songs.push_back(song);
 				}
 			}
