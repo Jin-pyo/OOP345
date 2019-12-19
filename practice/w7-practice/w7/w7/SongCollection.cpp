@@ -9,7 +9,12 @@ namespace sdds
 {
 	std::string& SongCollection::trim(std::string& line)
 	{
-		
+		while (line.length() > 0 && line[0] == ' ')
+			line.erase(0, 1);
+		while (line.length() > 0 && line[line.length() - 1] == ' ')
+			line.erase(line.length() - 1, 1);
+
+		return line;
 	}
 	
 	SongCollection::SongCollection(const char* filename)
